@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      a {
+        text-decoration: none; /* Remove underline */
+        color: inherit; /* Use the inherited color (usually defaults to black) */
+      }
+      .custom-button {
+        cursor: pointer;
+      }
+      .thirdlayer {
+        padding: 3px 10px !important;
+      }
+      @media screen and (max-width: 991px) {
+        .logo img {
+          max-width: 80px;
+          height: auto;
+        }
+        body {
+          zoom: 0.3;
+        }
+        select {
+          appearance: none;
+          -webkit-appearance: none;
+          background: #fff url("./images/angle-down-solid.svg") no-repeat center
+            right 2px;
+          padding-right: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bottomtopSection">
+      <div class="bottomtopTextSection">
+        <p>Welcome</p>
+        <p class="highlightText" id="hightlighttext"></p>
+        <div class="bottomText">
+          <p>
+            Your Current Balance is
+            <span class="highlightText bold" id="point_balance"></span>
+          </p>
+          <p>OTC is <span class="highlightText bold">0.00</span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- JAVASCRIPT -->
+<script src="/libs/jquery/jquery.min.js"></script>
+<script src="/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/libs/metismenu/metisMenu.min.js"></script>
+<script src="/libs/simplebar/simplebar.min.js"></script>
+<script src="/libs/node-waves/waves.min.js"></script>
+<script src="/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+<!--Morris Chart-->
+<script src="/libs/morris.js/morris.min.js"></script>
+<script src="/libs/raphael/raphael.min.js"></script>
+
+<script src="/js/pages/dashboard.init.js"></script>
+
+<!-- App js -->
+<script src="/js/app.js"></script>

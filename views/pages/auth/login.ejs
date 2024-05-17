@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=1024, initial-scale=1.0" /> -->
+    <meta name="viewport" content="width=1024" />
+    <title>Welcome to funrep</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+      }
+      input {
+        font-size: 11px;
+        font-weight: normal;
+        letter-spacing: 0;
+        line-height: 20px !important;
+        border: 1px solid #666666;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        border: 1px solid #000000;
+        width: 700px;
+      }
+      .top {
+        display: flex;
+        gap: 10px;
+      }
+
+      .topsecondimage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .middle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 34px;
+        width: 100%;
+        border-top: 2px solid #000;
+        border-bottom: 2px solid #000;
+        background-color: #efb600;
+      }
+      .middleul {
+        display: flex;
+        gap: 5px;
+      }
+      .middleul li {
+        list-style: none;
+        font-size: 11px;
+        font-weight: normal;
+        color: #333333;
+      }
+      .bottom {
+        position: relative;
+      }
+      .formcontainer {
+        width: 200px;
+        height: 124px;
+        position: absolute;
+        top: 25px;
+        left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        border: 1px solid #000;
+        padding: 8px;
+        border-bottom-right-radius: 1 0%;
+      }
+      .formelement {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .formelement p {
+        font-size: 11px;
+        color: #666666;
+        font-weight: normal;
+        line-height: 10px;
+        border: none;
+      }
+      .capcacode {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .capcacode input {
+        width: 110px;
+        height: 25px;
+      }
+      .capcacode button {
+        width: 48px;
+        height: 18px;
+        background-color: royalblue;
+        outline: none;
+        border: none;
+        margin-bottom: 4px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .refreshcode {
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none; /* Remove underline */
+        color: inherit; /* Use the default text color */
+      }
+      .capcha_design {
+        background: #fffdfb;
+        border: 2px solid #ff7588;
+        display: inline-block;
+        /* padding: 2px; */
+        font-size: 18px;
+        padding: 1px 10px;
+        color: #267031;
+        font-style: italic;
+        user-select: none;
+        font-family:Arial, Helvetica, sans-serif;
+      }
+      .copyright {
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+        color: #808080;
+        line-height: 50px;
+      }
+      .mainContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .error {
+        color: #c20000;
+        font-size: 12px;
+        line-height: 1.4;
+        margin-top: 10px;
+        /* text-transform: capitalize; */
+      }
+      .usernametext{
+        text-transform: uppercase;
+      }
+      #submit-button:disabled
+      {
+            background-color: gray; /* Change the background color */
+            color: #fff; /* Change the text color */
+            cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mainContainer">
+      <div class="main">
+        <p class="error" id="errtext"></p>
+
+        <div class="top">
+          <div class="topfirstimage">
+            <img
+              src="./images/top.jpg"
+              alt="top image"
+              width="100%"
+              height="100%"
+            />
+          </div>
+          <div class="topsecondimage">
+            <img
+              src="./images/top2.jpg"
+              alt="top image"
+              width="90%"
+              height="50%"
+            />
+          </div>
+        </div>
+        <div class="middle">
+          <ul class="middleul">
+            <li><a href="#">About Us | </a></li>
+            <li><a href="#">MGM | </a></li>
+            <li><a href="#">Tutorials | </a></li>
+            <li><a href="#">FAQ's | </a></li>
+            <li><a href="#">Downloads | </a></li>
+            <li><a href="#">Contact Us </a></li>
+          </ul>
+        </div>
+        <div class="bottom">
+          <div>
+            <img
+              src="./images/bottom.jpg"
+              alt="bottom image"
+              width="100%"
+              height="100%"
+            />
+          </div>
+          <form id="myForm">
+            <div class="formcontainer">
+              <div class="formelement">
+                <p>Login</p>
+                <input type="text" name="username" class="usernametext"/>
+              </div>
+              <div class="formelement">
+                <p>Password</p>
+                <input type="password" name="password" />
+              </div>
+              <div class="formelement">
+                <p>Enter the Below Number</p>
+                <input type="text" name="capcha" />
+              </div>
+              <div class="capcacode">
+                <div>
+                  <label id="capcha" class="capcha_design"></label>
+                  <!-- <img
+                    src="./images/GenerateCaptcha.jpg"
+                    alt="generate captcha"
+                    width="100%"
+                    height="100%"
+                  /> -->
+                </div>
+
+                <div class="refreshcode">
+                  <img
+                    id="refresh"
+                    src="./images/RefreshButton.png"
+                    alt="refreshbutton"
+                    width="24px"
+                    height="24px"
+                  />
+                </div>
+                <div>
+                  <button type="submit" id="submit-button">Go</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <p class="copyright">All Rights Reserved "funrep.me"</p>
+    </div>
+  </body>
+</html>
+
+<!-- JAVASCRIPT -->
+<script src="/libs/jquery/jquery.min.js"></script>
+<script src="/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/libs/metismenu/metisMenu.min.js"></script>
+<script src="/libs/simplebar/simplebar.min.js"></script>
+<script src="/libs/node-waves/waves.min.js"></script>
+<script src="/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+<!--Morris Chart-->
+<script src="/libs/morris.js/morris.min.js"></script>
+<script src="/libs/raphael/raphael.min.js"></script>
+
+<script src="/js/pages/dashboard.init.js"></script>
+
+<!-- App js -->
+<script src="/js/app.js"></script>
+<script>
+  $(document).ready(function () {
+    let randomNumber;
+    const displayCapcha = () => {
+      randomNumber = Math.floor(Math.random() * 90000000) + 10000000;
+      const capcha = document.getElementById("capcha");
+      capcha.textContent = randomNumber;
+    };
+    displayCapcha();
+    $("#refresh").click(function () {
+      displayCapcha();
+    });
+
+    $("#myForm").submit(function (event) {
+      event.preventDefault();
+      var formData = $(this).serializeArray();
+      const requestData = {};
+      console.log("formData: ", formData);
+      let errCount = 0;
+      const errtxt = document.getElementById("errtext");
+      formData.map((elem) => {
+        if (!elem?.value && errCount === 0) {
+          console.log("==========");
+          errtxt.textContent = `${elem.name} is required`;
+          errCount = 1;
+          // return false
+        } else {
+          requestData[elem.name] = elem.value;
+        }
+      });
+      if (randomNumber != requestData.capcha) {
+        errtxt.textContent = `Invalid Captcha`;
+        return false;
+      } else if (errCount === 0) {
+        errtxt.textContent = ``;
+        console.log("requestData: ", requestData);
+        delete requestData.capcha;
+        $.ajax({
+          url: "login",
+          method: "POST",
+          dataType: "json",
+          contentType: "application/json",
+          data: JSON.stringify(requestData),
+          success: (response) => {
+            console.log("response: ", response);
+            errtxt.textContent = response?.message;
+            console.log("response?.data?.message: ", response?.message);
+            errtxt.style.color = "red";
+            setTimeout(() => {
+              errtxt.textContent = "";
+              count = 1;
+            }, 2000);
+            window.location.href = "/dashboard";
+          },
+          error: (response) => {
+            errtxt.textContent = response?.responseJSON?.message;
+            setTimeout(() => {
+              errtxt.textContent = "";
+            }, 3000);
+          },
+        });
+      }
+    });
+  });
+</script>
+<script>
+ if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              
+                // Success callback
+                function(position) 
+                {
+                  const submitButton = document.getElementById("submit-button");
+                  const errtxt = document.getElementById("errtext");
+                  submitButton.disabled = false;
+                    // User location obtained successfully
+                    errtxt.textContent = ``;
+                    console.log("Location services are enabled.");
+                },
+                // Error callback
+                function(error) 
+                {
+                    // Prompt the user to enable location services
+                    if (error.code === error.PERMISSION_DENIED) 
+                    {
+                      const submitButton = document.getElementById("submit-button");
+                      const errtxt = document.getElementById("errtext");
+
+                      if (submitButton)
+                       {
+                          // For example, change its content or style
+                          errtxt.textContent = `Please allow location service.`;
+                          submitButton.disabled = true;
+                          
+                        } else 
+                        {
+                            console.log("Element not found!");
+                        }
+                        alert("Please enable location services to use this website.");
+                    }
+                }
+            );
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+  </script>

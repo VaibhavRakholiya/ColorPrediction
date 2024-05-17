@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <meta name="viewport" content="width=1024" />
+        <title>funrep | Contact US</title>
+        <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .dasboardContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .layout {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+      .firstlayer {
+        background-color: black;
+        height: 55px;
+      }
+      .secondlayer {
+        background-color: #990000;
+        height: 23px;
+      }
+      .middleul,
+      .bottomul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        height: 100%;
+      }
+      .bold {
+        font-weight: 700;
+      }
+      a {
+        cursor: pointer;
+      }
+      .middleul li {
+        list-style: none;
+        font-size: 13px;
+        font-weight: normal;
+        color: #ffffff;
+        cursor: pointer;
+      }
+      .thirdlayer {
+        background-color: #f7b200;
+        padding: 5px 10px;
+      }
+      .bottomul li {
+        font-weight: normal;
+        font-size: 13px;
+        color: #320000;
+        list-style: none;
+      }
+      .logo {
+        position: absolute;
+        top: 15px;
+        left: 10px;
+      }
+      .capcacode {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .capcacode input {
+        width: 110px;
+        height: 25px;
+      }
+      .capcacode button {
+        width: 48px;
+        height: 18px;
+        background-color: royalblue;
+        outline: none;
+        border: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .refreshcode {
+        cursor: pointer;
+      }
+      .contactformContainer{
+        display: flex;
+        margin-top:30px;
+        align-items: center;
+        width: 50%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+      }
+      .formelement {
+        display: grid;
+        grid-template-columns: 100px 200px;
+        gap: 10px;
+        position: relative;
+      }
+      .formelement p {
+        font-size: 11px;
+        color: #666666;
+        font-weight: normal;
+        line-height: 10px;
+        border: none;
+      }
+      .radiobtnContainer{
+        display: flex;
+        gap: 40px;
+      }
+      .radiobtn{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .radiobtn p{
+        font-size: 11px;
+      }
+      .captcahcodeImage{
+        display: flex;
+        gap: 10px;
+      }
+      .businessenquirybox{
+        padding: 4px;
+        width: 80%;
+        background-color: #D3D3D3;
+        border: 1px solid #333 !important;
+        position: absolute;
+        right: -260px;
+        height: 80px;
+        font-size: 14px !important;
+        color: #000 !important;
+        line-height: 18px !important;
+      }
+      .contactpara{
+        color: #008000;
+        font-weight: 800;
+        font-size: 14px;
+        display: grid;
+        grid-template-columns: 100px 230px;
+      }
+      .contactusContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+        </style>
+    </head>
+    <body>
+        <div class="dasboardContainer">
+            <%- include('../../partials/header') %>
+            <div class="contactusContainer">
+                <div class="contactformContainer">
+                    <div class="contactpara">
+                        <p>Contact Us</p>
+                        <p></p>
+                    </div>
+                    <div class="radiobtnContainer">
+                        <div class="radiobtn">
+                            <input type="radio" name="complaint">
+                            <p>Complaint</p>
+                        </div>
+                        <div class="radiobtn">
+                            <input type="radio" name="complaint">
+                            <p>Distributor / Agency / Business Enquiry</p>
+                        </div>
+                    </div>
+                    <div class="formelement">
+                        <p>Full Name :</p>
+                        <input type="text">
+                    </div>
+                    <div class="formelement">
+                        <p>Mobile No :</p>
+                        <input type="number">
+                    </div>
+                    <div class="formelement">
+                        <p>Email Id :</p>
+                        <input type="email">
+                    </div>
+                    <div class="formelement">
+                      <p>Complaint Details :</p>
+                      <textarea rows="5"></textarea>
+                  </div>
+                    <div class="formelement busineessEnquiry">
+                        <p>Business Enquiry:</p>
+                        <textarea rows="5"></textarea>
+                        <p class="businessenquirybox">Distributor / Agency / Business Enquiry
+                          Kindly Put your City / District / State Details also,
+                          so that the relevant person can contact you.</p>
+                    </div>
+                    <div class="formelement">
+                        <p>Enter Below Code:</p>
+                        <input type="text">
+                    </div>
+                    <div class="capcacode">
+                      <div class="captcahcodeImage">
+                          <div>
+                              <img
+                                  src="./images/GenerateCaptcha.jpg"
+                                  alt="generate captcha"
+                                  width="100%"
+                                  height="100%"
+                              >
+                          </div>
+                          <div class="refreshcode">
+                              <img
+                                  src="./images/RefreshButton.png"
+                                  alt="refreshbutton"
+                                  width="24px"
+                                  height="24px"
+                              >
+                          </div>
+                      </div>
+                        <div>
+                            <button>Send Enquiry</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1024" />
+    <title>Welcome to funrep</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .dasboardContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .layout {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+      .firstlayer {
+        background-color: black;
+        height: 55px;
+        width: 100%;
+      }
+      .secondlayer {
+        background-color: #990000;
+        height: 23px;
+        width: 100%;
+      }
+      .middleul,
+      .bottomul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        height: 100%;
+      }
+      .bold {
+        font-weight: 700;
+      }
+      a {
+        cursor: pointer;
+      }
+      .middleul li {
+        list-style: none;
+        font-size: 13px;
+        font-weight: normal;
+        color: #ffffff;
+        cursor: pointer;
+      }
+      .thirdlayer {
+        background-color: #f7b200;
+        padding: 5px 10px;
+        width: 100%;
+      }
+      .bottomul li {
+        font-weight: normal;
+        font-size: 13px;
+        color: #320000;
+        list-style: none;
+      }
+      .logo {
+        position: absolute;
+        top: 15px;
+        left: 10px;
+      }
+      .bottomMainContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: auto;
+        gap: 10px;
+        max-width: 1070px;
+      }
+      .bottomtopSection {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .bottomText {
+        display: flex;
+        justify-content: space-between;
+      }
+      .bottomtopTextSection {
+        width: 100%;
+      }
+      .bottomtopTextSection p {
+        font-size: 12px;
+        font-weight: normal;
+        padding-top: 4px;
+      }
+
+      .highlightText {
+        color: #0000ff;
+        font-size: 14px !important;
+      }
+      .bottomImage {
+        display: flex;
+        width: 100%;
+      }
+      .contentContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .managePoint {
+        display: flex;
+        flex-direction: column;
+        width: 650px;
+        border: 1px solid black;
+        padding: 2px;
+        margin: 0px 10px 10px 10px;
+      }
+      .managePointContainer {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        background: #990000;
+        color: white;
+        height: 25px;
+        font-size: 12px;
+      }
+      .radiobtn {
+        display: flex;
+        align-items: center;
+      }
+      .radiobtnContainer {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        font-size: 12px;
+        margin-right: 50px;
+      }
+      .tableContainer {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 5px;
+      }
+      .table thead tr {
+        background: #f5f5f5;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50px 140px 70px 50px;
+      }
+      .table tbody tr{
+        display: grid;
+        grid-template-columns: 50px 140px 70px 50px;
+      }
+      .table thead tr th{
+        font-weight: 100 !important;
+      }
+      .table tbody tr th{
+        justify-self: flex-start;
+      }
+      .refreshbtncontainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #dcdcdc;
+        padding: 3px 5px;
+      }
+      .refreshbtn {
+        background: #1e90ff;
+        color: #fff;
+        padding: 4px;
+        font-size: 14px;
+        outline: none;
+        cursor: pointer;
+        border: none;
+      }
+      input[type="checkout"] {
+        cursor: pointer;
+      }
+      .table {
+        width: 100%;
+        height: 130px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+      tr {
+        font-size: 13px;
+        color: #666666;
+        font-weight: 400;
+        text-align: center;
+      }
+      .tablecontainerleft {
+        position: relative;
+        /* height: 200px;
+        overflow-y: auto; */
+      }
+      .tablefooter {
+        position: absolute;
+        bottom: 0px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 4px 10px;
+        background: #dcdcdc;
+      }
+      .checkboxContainer {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .text {
+        font-size: 13px;
+        line-height: 24px;
+        color: #666666;
+      }
+      .headingpara {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .formelement {
+        display: grid;
+        grid-template-columns: 100px 150px;
+        gap: 10px;
+        align-items: center;
+        position: relative;
+      }
+      .formelement p {
+        font-size: 13px;
+        color: #666666;
+        font-weight: normal;
+        line-height: 10px;
+        border: none;
+      }
+      .tableContainerform {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 40%;
+        margin: auto;
+        padding: 15px 0px;
+        gap: 4px;
+      }
+      .formelementbutton {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+      }
+      .formelementbutton p {
+        color: #990000;
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .custom-button {
+        cursor: pointer;
+      }
+      td {
+        margin-left: 10px; /* Adjust the value as needed */
+    }
+    .error{
+      color: #FF0000 !important;
+      font-size: 12px !important;
+      font-weight: 100;
+      position:absolute;
+      right: -165px;
+      text-align: left;
+    }
+  .account-error{
+    right: -133px;
+  }
+  .amount-error{
+    right: -133px;
+  }
+    #trans-msg{
+      color: #990000 !important;
+    }
+    #cancel-btn{
+      margin-right: 50px;
+    }
+    
+    </style>
+  </head>
+  <body>
+    <div class="dasboardContainer">
+      <%- include('../../partials/header') %>
+      <div class="bottomMainContainer">
+        <%- include('../../partials/userdetails') %>
+       
+        <span id="trans-msg"></span>
+
+        <div class="bottomImage">
+          <div class="sliderimage">
+            <img
+              src="./images/Slider1.gif"
+              alt="gif"
+              width="200px"
+              height="auto"
+            />
+          </div>
+          <div class="contentContainer">
+            <div class="managePoint">
+              <div class="managePointContainer">
+                <p class="headingpara">:: Manage My Point</p>
+                <div class="radiobtnContainer">
+                  <div class="radiobtn">
+                    <input type="radio" name="gkpoint" checked />
+                    <span>GK Point</span>
+                  </div>
+                  <div class="radiobtn">
+                    <input type="radio" name="gkpoint" />
+                    <span>Multiplayer Point</span>
+                  </div>
+                </div>
+              </div>
+              <div class="tableContainer">
+                <div class="tablecontainerleft">
+                  <div class="refreshbtncontainer">
+                    <p class="text">Receivables</p>
+                    <button class="refreshbtn" id="refresh-btn">Refresh</button>
+                  </div>
+                  <table class="table" id="myTable">
+                    <thead>
+                      <tr>
+                        <th>Select</th>
+                        <th>From Member Id</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tableBody2"></tbody>
+                  </table>
+                  <div class="tablefooter">
+                    <div class="checkboxContainer">
+                      <input type="checkbox" id="receive-all" />
+                      <p class="text" >Select All</p>
+                    </div>
+                    <button class="refreshbtn" id="receive-all-btn" >Receive</button>
+                    <button class="refreshbtn" id="reject-btn">Reject</button>
+                  </div>
+                </div>
+                <div class="tablecontainerleft">
+                  <div class="refreshbtncontainer">
+                    <p class="text">Transferable</p>
+                    <button class="refreshbtn" id="point-trans-btn">
+                      Point Transfer
+                    </button>
+                  </div>
+                  <table class="table" id="table-transferable">
+                    <thead>
+                      <tr>
+                        <th>Select</th>
+                        <th>From Member Id</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                  </table>
+                  <div class="tablefooter">
+                    <div class="checkboxContainer">
+                      <input type="checkbox" id="cancel-all" />
+                      <p class="text">Select All</p>
+                    </div>
+                    <button class="refreshbtn" id="cancel-btn">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="managePoint" id="point-tras-from">
+              <div class="managePointContainer">
+                <p class="headingpara">:: Point Transfer</p>
+              </div>
+              <form id="myForm">
+                <div class="tableContainerform">
+                  <div class="formelement">
+                    <p>To Account No. :</p>
+                    <input type="text" name="to_member_id" value="GK" />
+                    <p class="error account-error" id="to_member_id"></p>
+                  </div>
+                  <div class="formelement">
+                    <p>Your Pin :</p>
+                    <input type="number" name="pin" />
+                    <!-- <p class="error">* Numeric Value Allowed Only</p> -->
+                  </div>
+                  <div class="formelement">
+                    <p>Amount :</p>
+                    <input type="number" name="amount" />
+                    <p class="error amount-error" id="amount-error"></p>
+                  </div>
+                <!-- </div> -->
+                <div class="formelementbutton">
+                  <button class="refreshbtn" type="submit">Transfer</button>
+                  <p class="custom-button" id="close-btn">Close</p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img
+            src="./images/Slider2.gif"
+            alt="gif"
+            width="200px"
+            height="auto"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- JAVASCRIPT -->
+<script src="/libs/jquery/jquery.min.js"></script>
+<script src="/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/libs/metismenu/metisMenu.min.js"></script>
+<script src="/libs/simplebar/simplebar.min.js"></script>
+<script src="/libs/node-waves/waves.min.js"></script>
+<script src="/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+<!--Morris Chart-->
+<script src="/libs/morris.js/morris.min.js"></script>
+<script src="/libs/raphael/raphael.min.js"></script>
+
+<script src="/js/pages/dashboard.init.js"></script>
+
+<!-- App js -->
+<script src="/js/app.js"></script>
+
+<script>
+  $(document).ready(function () {
+    
+    let accessToken,username;
+
+      Transferable();
+      Receiveable();
+    //check auth
+    const checkAuth = () => {
+      $.ajax({
+        url: "/check-auth", // Update with the appropriate API endpoint URL
+        type: "post",
+        success: function (response) {
+          console.log("response: ", response);
+          if (!response?.data?.token) {
+            window.location.href = "/";
+          }
+          if (response?.data) {
+            localStorage.setItem('user', JSON.stringify(response?.data))
+            const storedUser = JSON.parse(localStorage.getItem('user'));
+            console.log("===",storedUser); // Output: JohnDoe
+            accessToken = response?.data?.token
+             username = response?.data?.username
+            const balance = document.getElementById("point_balance");
+            balance.textContent = response?.data?.point_balance;
+            const hightlighttext = document.getElementById("hightlighttext");
+            hightlighttext.textContent = response?.data?.name
+          }
+        },
+        error: function (error) {
+          console.log("error", error);
+          window.location.href = '/';
+        },
+      });
+    }
+    checkAuth()
+    
+    //point transfer
+    $("#myForm").submit(function (event) {
+      event.preventDefault();
+      var formData = $(this).serializeArray();
+      const requestData = {};
+      formData.map((elem) => {
+        if(elem.name === 'amount'){
+          requestData[elem.name] = Number(elem.value);
+        }else{
+          requestData[elem.name] = elem.value;
+        }
+      });
+      requestData.from_member_id = username
+      console.log('requestData: ', requestData);
+      if(requestData){
+        if(requestData.to_member_id === "" && !requestData.to_member_id.include("00")){
+          const selectto_member_id= document.getElementById("to_member_id");
+          selectto_member_id.innerText = "* Member ID not Proper";
+          return;
+        }
+      }
+      // const accessToken = $.cookie("token");
+      $.ajax({
+        url: "create-transection",
+        method: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(requestData),
+        headers: {
+          Authorization: "Bearer " + accessToken, // Add Authorization header with access token
+        },
+        success: (response) => {
+          console.log('response: ', response);
+          const succ = document.getElementById("trans-msg");
+            succ.textContent = response?.message;  
+            console.log('response?.data?.message: ', response?.message);
+            succ.style.color = "green";
+            checkAuth();
+            setTimeout(() => {
+              succ.textContent = '';  
+              count = 1
+              Transferable();
+            }, 2000);   
+            $('#myForm')[0].reset();
+          },
+        error:(response)=>{
+            const err = document.getElementById("trans-msg");
+            if(response?.responseJSON?.message ==="*Balance is not Enough"){
+              const errorAmount = document.getElementById('amount-error');
+              errorAmount.textContent = response?.responseJSON?.message;  
+              
+            }else{
+              err.textContent = response?.responseJSON?.message;  
+              err.style.color = "red";     
+              setTimeout(() => {
+              err.textContent = '';  
+              }, 3000);     
+            }
+        }
+      });
+    });
+
+    //get Transferable transection history
+    function Transferable(){ 
+      // Get the table body element
+      var tableBody = document.getElementById('tableBody');
+      // Remove all child elements (tr) from the table body
+      while (tableBody.firstChild) {
+          tableBody.removeChild(tableBody.firstChild);
+      }
+    console.log('username: ', username);
+    $.ajax({
+        url: "get-transferable-tarnsection",
+        method: "get",
+        contentType: "application/json",
+        headers: {
+          Authorization: "Bearer " + accessToken, // Add Authorization header with access token
+        },
+        success: (response) => {
+          console.log('response: ', response);
+          $.each(response.data, function(index, data) {
+                // Create a new table row
+                var newRow = $('<tr id="trr">');
+                var checkbox = $('<input>').attr({ type: 'checkbox', id:data._id, value:data._id});
+                var tdCheckbox = $('<td>').append(checkbox);
+                newRow.append(tdCheckbox);
+
+                // Add table cells with user data
+                newRow.append($('<td>').text(data.to_member_id));
+                newRow.append($('<td>').text(data.amount));
+                newRow.append($('<td>').text(data.type));
+
+                // Append the new row to the table body
+                $('#tableBody').append(newRow);
+            });
+          },
+        error:(response)=>{
+        }
+      });
+    }
+    
+    //get Receivables history
+    function Receiveable(){
+      // Get the table body element
+      var tableBody = document.getElementById('tableBody2');
+      // Remove all child elements (tr) from the table body
+      while (tableBody.firstChild) {
+          tableBody.removeChild(tableBody.firstChild);
+      }
+    $.ajax({
+        url: "get-receivables-tarnsection",
+        method: "get",
+        contentType: "application/json",
+        headers: {
+          Authorization: "Bearer " + accessToken, // Add Authorization header with access token
+        },
+        success: (response) => {
+          console.log('response: ', response);
+          $.each(response.data, function(index, data) {
+                // Create a new table row
+                var newRow = $('<tr>');
+                    var checkbox = $('<input>').attr({ type: 'checkbox', id:data.id, value: data._id });
+                  
+                var tdCheckbox = $('<td>').append(checkbox);
+                newRow.append(tdCheckbox);
+                // Add table cells with user data
+                newRow.append($('<td>').text(data.from_member_id));
+                newRow.append($('<td>').text(data.amount));
+                newRow.append($('<td>').text(data.type));
+
+                // Append the new row to the table body
+                $('#tableBody2').append(newRow);
+            });
+          },
+        error:(response)=>{
+        }
+      });
+    } 
+
+    //select receiveable point 
+    $('#receive-all').click(function() {
+    // Select all checkboxes in the table body and check them
+      var checkboxes = $('#myTable tbody input[type="checkbox"]');;
+        checkboxes.prop('checked', this.checked);
+    });  
+      
+    $('#receive-all-btn').click(function() {
+      console.log("==========");
+      var checkboxes = $('#myTable tbody input[type="checkbox"]');;
+      var checkedIds = checkboxes.filter(':checked').map(function() {
+        return $(this).val(); // Assuming IDs are stored in the 'value' attribute
+      }).get();
+      console.log('checkedIds: ', checkedIds);
+      if(checkedIds?.length){
+        $.ajax({
+          url: "receive-all-points",
+          method: 'POST',
+          dataType: 'json',
+          contentType: 'application/json',
+          data: JSON.stringify({checkedIds:checkedIds}),
+          headers: {
+            Authorization: "Bearer " + username, // Add Authorization header with access token
+          },
+          success: (response) => {
+            if(response){
+              Receiveable();
+              checkAuth()
+            }
+            
+            },
+          error:(response)=>{
+          }
+        });
+      }
+    })
+
+    $('#reject-btn').click(function() {
+      console.log("==========");
+      var checkboxes = $('#myTable tbody input[type="checkbox"]');;
+      var checkedIds = checkboxes.filter(':checked').map(function() {
+        return $(this).val(); // Assuming IDs are stored in the 'value' attribute
+      }).get();
+      console.log('checkedIds: ', checkedIds);
+      if(checkedIds?.length){
+        $.ajax({
+          url: "reject-points",
+          method: 'POST',
+          dataType: 'json',
+          contentType: 'application/json',
+          data: JSON.stringify({checkedIds:checkedIds}),
+          headers: {
+            Authorization: "Bearer " + username, // Add Authorization header with access token
+          },
+          success: (response) => {
+            if(response){
+              Receiveable();
+              checkAuth()
+            }
+            
+            },
+          error:(response)=>{
+          }
+        });
+      }
+        
+    })
+
+      //refresh click refresh-btn
+      $('#refresh-btn').click(function() {
+        Receiveable()
+    });  
+
+    //select Transferable point 
+    $('#cancel-all').click(function() {
+      Transferable()
+      setTimeout(() => {
+        var checkboxes = $('#table-transferable tbody input[type="checkbox"]');;
+        checkboxes.prop('checked', this.checked);
+      }, 100);
+    });  
+
+    //refresh click refresh-btn
+    $('#cancel-btn').click(function() {
+      console.log("==========");
+      var checkboxes = $('#table-transferable tbody input[type="checkbox"]');;
+      var checkedIds = checkboxes.filter(':checked').map(function() {
+        return $(this).val(); // Assuming IDs are stored in the 'value' attribute
+      }).get();
+      console.log('checkedIds: ', checkedIds);
+      if(checkedIds?.length){
+        $.ajax({
+          url: "cancel-points",
+          method: 'POST',
+          dataType: 'json',
+          contentType: 'application/json',
+          data: JSON.stringify({checkedIds:checkedIds}),
+          headers: {
+            Authorization: "Bearer " + username, // Add Authorization header with access token
+          },
+          success: (response) => {
+            if(response){
+              // Receiveable();
+              checkAuth();
+              Transferable()
+            }
+            
+            },
+          error:(response)=>{
+          }
+        });
+      }
+    })
+
+
+
+
+  });
+</script>
+<script>
+  $(document).ready(function () {
+    $("#close-btn").click(function () {
+      const div = document.getElementById("point-tras-from");
+      div.style.display = "none";
+    });
+    $("#point-trans-btn").click(function () {
+      const div = document.getElementById("point-tras-from");
+      div.style.display = "flex";
+    });
+    $("#logout").click(function () {
+      $.ajax({
+        url: "/logout", // Update with the appropriate API endpoint URL
+        type: "POST",
+        success: function (response) {
+          console.log("res", response);
+          window.location.href = "/";
+        },
+        error: function (error) {
+          console.log("error", error);
+          // window.location.href = '/';
+        },
+      });
+      window.location.href = "/";
+    });
+  });
+</script>
