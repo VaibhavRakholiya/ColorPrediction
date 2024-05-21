@@ -185,6 +185,27 @@ class UserController {
       res.errorHandler({ res });
     }
   }
+
+  async getOnlinePlayers(req, res) {
+    try {
+      const data = await userModel.getOnlinePlayers();
+      if (data?.error) {
+        return res.errorHandler({
+          res,
+          message: data.message,
+        });
+      }
+      return res.handler({
+        res,
+        data: data,
+        message: "history successfully fatched",
+      });
+    } catch (error) {
+      console.log("error: ", error);
+      res.errorHandler({ res });
+    }
+  }
+
   async getReceivablesTarnsection(req, res) {
     try {
       const data = await userModel.getReceivablesTarnsection(req.body.username);

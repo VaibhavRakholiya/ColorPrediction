@@ -65,6 +65,7 @@ class UserModel {
       };
     }
     const token = jwt.sign({ username: user.username }, process.env.TOKEN);
+    User.updateOne({ username: username },{$set:{is_logged_in : 1}});
     return {
       first_name: user.first_name,
       last_name: user.last_name,
@@ -154,6 +155,10 @@ class UserModel {
   }
   async getReceivablesTarnsection(username) {
     return await Transection.find({ to_member_id: username, status: 1 });
+  }
+
+  async getOnlinePlayers() {
+    return await User.find({status: 1 });
   }
 
   async receiveAllPoints(data) {

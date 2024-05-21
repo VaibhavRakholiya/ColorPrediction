@@ -39,6 +39,7 @@ router.post('/cancel-points-app',upload.none(), usercontroller?.cancelPointsMobi
 //Application api
 router.post('/userlogin' ,upload.none(),usercontroller?.loginAppUser );
 router.post('/userupdatecoins' , upload.none(),usercontroller?.updateUserCoins );
+router.get('/get-online-players', usercontroller?.getOnlinePlayers);
 
 
 module.exports = router ;
