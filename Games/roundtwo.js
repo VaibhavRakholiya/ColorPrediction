@@ -66,9 +66,9 @@ async function CalculateWinnings(winningValue) {
   });
   const data = await response.json();
 
-  const filteredData = data.filter(entry => entry.game_type === 2);
+  const filteredData = data?.filter(entry => entry.game_type === 2) || []
 
-  let spinStopNumber = filteredData[0].win_no !== "" ? filteredData[0].win_no : await findLeastBettedNumber(winningValue); // Generating Random Number on which ball will be stopped.
+  let spinStopNumber = filteredData.length > 0 && filteredData[0].win_no !== "" ? filteredData[0].win_no : await findLeastBettedNumber(winningValue);
 
   let result =
   {
